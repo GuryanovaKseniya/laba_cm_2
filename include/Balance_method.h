@@ -6,7 +6,8 @@
 
 using std::vector;
 
-vector<vector <double>> balance_method(double h);
-
+vector<vector <double>> balance_method(int n, double h);
+void create_coeff(double beg, double end, vector<double> &coeff, double h);
+double integrate_func(double left, double right, double(*func)(double));
 
 #endif
