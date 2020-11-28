@@ -12,11 +12,13 @@
 const double ksi = 0.4;
 const double mu1 = 0;
 const double mu2 = 1;
-double k1(double x) { return (x + 1); }
-double k2(double x) { return x; }
-double q1(double x) { return x; }
-double q2(double x) { return x * x; }
-double f1(double x) { return x; }
-double f2(double x) { return exp(-x); }
+const double x0 = 0;
+const double x1 = 1;
+inline double k1(double x) { return (x + 1); }
+inline double k2(double x) { return x; }
+inline double q1(double x) { return x; }
+inline double q2(double x) { return x * x; }
+inline double f1(double x) { return x; }
+inline double f2(double x) { return exp(-x); }
 
 #endif
