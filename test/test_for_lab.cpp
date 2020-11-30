@@ -34,3 +34,34 @@ TEST(balance_method, balance_method_cause_no_error_with_simple_task)
 	vector<vector <double>> test = balance_method(5, 0.2);
 	ASSERT_NO_THROW(print_matrix(test));
 }
+
+TEST(Trid_matr_alg, Trid_matr_alg_cause_no_error)
+{
+	vector<vector <double>> test1;
+	test1 = { {2, -1, 0, 0, 0, -25}, {-3, 8, -1, 0, 0, 72}, {0, -5, 12, 2, 0, -69}, {0, 0, -6, 18, -4, -156}, {0, 0, 0, -5, 10, 20} };
+	ASSERT_NO_THROW(vector<double> y = tridiagonal_matrix_algorithm(test1));
+}
+
+TEST(Trid_matr_alg, Trid_matr_alg_can_calculate_system1)
+{
+	vector<vector <double>> test1;
+	test1 = { {1, -0.5, 0, 0, 0, -12.5}, {-3, 8, -1, 0, 0, 72}, {0, -5, 12, 2, 0, -69}, {0, 0, -6, 18, -4, -156}, {0, 0, 0, -0.5, 1, 2} };
+	vector<double> y = tridiagonal_matrix_algorithm(test1);
+	//for (int i = 0; i < y.size(); i++) cout << y[i] << '\n';
+	double mu6 = 0;
+	for (int i = 0; i < y.size(); i++) mu6 += y[i] * test1[test1.size() - 1][i];
+	//cout << "Mu6:" << mu6 << '\n';
+	EXPECT_EQ(2, mu6);
+}
+
+TEST(Trid_matr_alg, Trid_matr_alg_can_calcylate_simple_system)
+{
+	vector<vector <double>> test1;
+	test1 = { {1, 5, 6}, { -4, 1, 5} };
+	vector<double> y = tridiagonal_matrix_algorithm(test1);
+	//for (int i = 0; i < y.size(); i++) cout << y[i] << '\n';
+	double mu6 = 0;
+	for (int i = 0; i < y.size(); i++) mu6 += y[i] * test1[test1.size() - 1][i];
+	//cout << "Mu6:" << mu6 << '\n';
+	EXPECT_EQ((int) test1[1][2], (int) mu6);
+}
